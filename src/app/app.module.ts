@@ -6,19 +6,27 @@ import { ClientsModule } from './clients/clients.module';
 
 import { RoutingModule } from './routing.module';
 
+import { HttpClientModule } from '@angular/common/http'; 
+
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { ChaisesComponent } from './chaises/chaises/chaises.component';
+import { ChaiseFormComponent } from './chaise-form/chaise-form.component';
+import { FormsModule } from '@angular/forms';
+import { ChienModule } from './chien/chien.module';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChaisesComponent,
+    ChaiseFormComponent
   ],
   imports: [
-    BrowserModule, RoutingModule
+    BrowserModule, RoutingModule, FormsModule, ChienModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

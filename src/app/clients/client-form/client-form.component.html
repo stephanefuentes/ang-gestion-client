@@ -1,7 +1,7 @@
 
 
-<h2 *ngIf="!editMode">Creation d'un client</h2>
-<h2 *ngIf="editMode">Modification d'un client</h2> 
+<h2 *ngIf="!client">Creation d'un client</h2>
+<h2 *ngIf="client">Modification d'un client</h2> 
 
 <!-- 
   1) Pour gérer un formulaire dans Angular, il suffit d'un formulaire classique
@@ -18,7 +18,9 @@
   5.5) Les différentes erreurs se trouvent la propriété .errors d'un ngModel
 
  -->
-
+{{ client | json }}
+<hr />
+{{ clientForm.value | json }}
 
 <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)"> 
 
@@ -29,7 +31,7 @@
                 required    
                 minlength="3"        
                 placeholder="Prénom"
-                ngModel
+                [ngModel]="client?.firstName"
 
                 #firstName="ngModel"
                 [class.is-invalid]="
@@ -50,7 +52,7 @@
                 class="form-control" 
                 name="lastName" 
                 placeholder="Nom de famille"
-                ngModel
+                [ngModel]=client?.lastName
                 required  
                 minlength="3" 
                 #lastName="ngModel"
@@ -77,7 +79,7 @@
                 required  
                 minlength="10" 
                 placeholder="email"
-                ngModel
+                [ngModel]="client?.email"
 
                 #tartine="ngModel"
                 [class.is-invalid]="
@@ -102,7 +104,7 @@
             placeholder="Entreprise"
             required
             minlength="2"
-            ngModel 
+            [ngModel]="client?.company" 
             
             #choupi="ngModel"
             [class.is-invalid]="

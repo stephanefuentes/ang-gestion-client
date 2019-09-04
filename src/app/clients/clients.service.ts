@@ -93,4 +93,27 @@ export class ClientsService {
 
   }
 
+
+  public getClient(id: number)
+  {
+    return this.clients.find(client => client.id === id);
+    
+  }
+
+  public updateClient(client)
+  {
+    // 1. Trouver l'index du client dans le tableau
+    const index = this.clients.findIndex(c => c.id === client.id);
+
+    // 2. Remplacer l'élément qui se trouve à l'index
+    if (index >= 0) {
+      this.clients[index] = client;
+      return true;
+    }
+
+    return false;
+  
+  }
+
+
 }

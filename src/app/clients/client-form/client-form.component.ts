@@ -10,16 +10,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ClientFormComponent implements OnInit {
 
-  editMode = true;
+  // editMode = true;
+  client;
 
   constructor(private service: ClientsService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     console.log('identifaint :', id);
-    if(id === "new")
+
+    // if(id === "new")
+    // {
+    //   this.editMode = false;
+    // }else{
+    //   this.client = this.service.getClient(+id);
+    // }
+
+    if( id !== "new")
     {
-      this.editMode = false;
+      this.client = this.service.getClient(+id);
     }
 
   }
@@ -28,9 +37,20 @@ export class ClientFormComponent implements OnInit {
   {
 
     if (form.valid) {
+
+      if(this.client){
+        //update
+        const updatedClient = { ...this.client, ...form.value };
+        this.service.updateClient(updatedClient);
+
+      }else{
+        //create
+        // 1. Appeler le service qui gère les clients pour ajouter ce nouveau client
+        this.service.addClient(form.value);
+
+      }
+
       console.log(form.value);
-      // 1. Appeler le service qui gère les clients pour ajouter ce nouveau client
-      this.service.addClient(form.value);
 
       // 2. Rediriger sur la liste des clients
       this.router.navigateByUrl("/clients");
