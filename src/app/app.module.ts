@@ -15,6 +15,7 @@ import { ChaisesComponent } from './chaises/chaises/chaises.component';
 import { ChaiseFormComponent } from './chaise-form/chaise-form.component';
 import { FormsModule } from '@angular/forms';
 import { ChienModule } from './chien/chien.module';
+import { StudentsModule } from './students/students.module';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -23,10 +24,10 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     ChaisesComponent,
-    ChaiseFormComponent
+    ChaiseFormComponent 
   ],
   imports: [
-    BrowserModule, RoutingModule, FormsModule, ChienModule, HttpClientModule
+    BrowserModule, RoutingModule, FormsModule, ChienModule, HttpClientModule, StudentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

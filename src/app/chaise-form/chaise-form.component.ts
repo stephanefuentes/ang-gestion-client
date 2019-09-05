@@ -70,14 +70,20 @@ export class ChaiseFormComponent implements OnInit {
       }
       else{
         this.service.createChaise(form.value).subscribe(() => {
-          this.router.navigateByUrl("/chaises"); 
+          alert('ok, création effectué');
+          this.router.navigateByUrl("/chaises");
         },
-        () =>
-          {
-            console.log("ce n'est pas bon");
-          }
-        );
-      }
+        error => {
+          alert('souci au niveau de la création')
+        });
+        // .subscribe(() => {
+        //   this.router.navigateByUrl("/chaises");
+        // },
+        //   error => {
+        //     console.log(error);
+        //   }
+        // );
+      } 
 
       // this.router.navigateByUrl("/chaises"); 
   }

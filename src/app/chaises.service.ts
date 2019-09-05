@@ -42,7 +42,7 @@ export class ChaisesService {
     // this.chaises.push(chaise);
 
     // return of(true);
-    this.http.post<Chaise>("http://5a5a9e00bc6e340012a03796.mockapi.io/chaises", chaise
+    return this.http.post<Chaise>("http://5a5a9e00bc6e340012a03796.mockapi.io/chaises", chaise
      
     );
 
