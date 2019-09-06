@@ -15,6 +15,9 @@ import { StudentComponent } from './students/student/student.component';
 import { ArbreFormComponent } from './arbre-form/arbre-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarFormComponent } from './car-form/car-form.component';
+import { DashboardComponent } from './students/dashboard/dashboard.component';
+import { DashboardDetailsComponent } from './students/dashboard-details/dashboard-details.component';
+import { DashboardDetailsEditComponent } from './students/dashboard-details-edit/dashboard-details-edit.component';
 
 const routes: Routes = [
   { path: "clients", component: ClientsComponent },
@@ -28,6 +31,13 @@ const routes: Routes = [
 
   { path: "students", component: StudentsComponent },
   { path: "students/:id", component: StudentComponent},
+
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    children: [{ path: ":id", component: DashboardDetailsComponent },
+               { path: ":id/edit", component: DashboardDetailsEditComponent } ]
+  },
 
   { path: "arbre", component: ArbreFormComponent },
 

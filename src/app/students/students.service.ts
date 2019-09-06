@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Student } from './student';
 
@@ -8,6 +8,8 @@ import { Student } from './student';
 })
 export class StudentsService {
 
+//  on peut typer un subject , par exemple Subject<string>()
+  dataChanged = new Subject();
 
 
   constructor(private http: HttpClient) { }

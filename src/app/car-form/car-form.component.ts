@@ -57,7 +57,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CarFormComponent implements OnInit {
 
 
-  form: FormGroup;
+  myCar: FormGroup;
   
   car = {
     marque: "Peugeot",
@@ -78,7 +78,7 @@ export class CarFormComponent implements OnInit {
   initializeForm() {
     // Ici on initialise le formulaire
 
-    this.myCar = new FormGroup({
+    this.myCar = new FormGroup({ 
       marque: new FormControl(this.car && this.car.marque, Validators.required),
       model: new FormControl(this.car && this.car.model, Validators.required),
       age: new FormControl(this.car && this.car.age, Validators.required),
